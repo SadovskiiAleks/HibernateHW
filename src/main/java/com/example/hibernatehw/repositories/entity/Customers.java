@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @Builder
 @AllArgsConstructor
-@Table( name = "Customers")
+@Table(name = "Customers")
 public class Customers {
     @Id
     @GeneratedValue
@@ -20,7 +20,8 @@ public class Customers {
     String name;
     String surname;
     int age;
-    long phone_number;
+    @Column(name = "phone_number")
+    long phoneNumber;
 
     @OneToMany(mappedBy = "customers")
     private Set<Orders> ordersSet;

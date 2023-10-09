@@ -23,7 +23,8 @@ public class Orders {
             nullable=false)
     Customers customers;
 
-    String product_name;
+    @Column(name = "product_name")
+    String productName;
     int amount;
 
     public Orders() {
