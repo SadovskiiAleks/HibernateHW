@@ -19,7 +19,6 @@ public class BaseConnectRepository {
                                 "where lower(c.name) = lower(:custName)"
                 )
                 .setParameter("custName", name)
-                .setMaxResults(10)
                 .getResultList();
     }
 }
