@@ -1,6 +1,7 @@
 package com.example.hibernatehw.repositories.entity;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -23,7 +24,8 @@ public class Persons {
     private User user;
 
     private int phone_number;
-    private String city_of_living;
+    @Column(name = "city_of_living")
+    private String cityOfLiving;
 
 
     public Persons() {

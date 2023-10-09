@@ -14,7 +14,7 @@ public class RepositoryImpl implements Repositor {
 
     public List getPersonsByCity(String city) {
         return entityManager.createQuery(
-                        "select p.user from Persons p WHERE p.city_of_living LIKE :custCity")
+                        "select p.user from Persons p WHERE p.cityOfLiving LIKE :custCity")
                 .setParameter("custCity", city)
                 .setMaxResults(10)
                 .getResultList();
