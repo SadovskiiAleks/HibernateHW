@@ -1,6 +1,7 @@
 package com.example.hibernatehw.repositories.entity;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -17,14 +18,14 @@ import lombok.Data;
         schema = "public")
 public class Persons {
 
-
-//    первичным ключом будет сочетание name, surname, age.
     @EmbeddedId
     private User user;
 
-    private int phone_number;
-    private String city_of_living;
+    @Column(name = "phone_number")
+    private int phoneNumber;
 
+    @Column(name = "city_of_living")
+    private String cityOfLiving;
 
     public Persons() {
 
