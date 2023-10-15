@@ -16,6 +16,11 @@ public class ControllerImpl implements Controller {
 
     private final RepositoryImpl repositoryImpl;
 
+    @GetMapping("/userName")
+    public String GetUser() {
+        return "Name: user, password: password";
+    }
+
     @GetMapping("/by-city")
     public List testGetContr2(@RequestParam String city) {
         return repositoryImpl.getPersonsByCity(city);
