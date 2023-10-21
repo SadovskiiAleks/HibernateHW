@@ -7,5 +7,8 @@ import java.util.List;
 
 @RestController
 public interface Controller {
+
     public List testGetContr2(@RequestParam String city);
+
+
 }
