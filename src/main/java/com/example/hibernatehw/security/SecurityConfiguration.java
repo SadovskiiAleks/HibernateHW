@@ -17,7 +17,7 @@ import java.util.List;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
-@EnableGlobalMethodSecurity(
+@EnableMethodSecurity(
         prePostEnabled = true,
         securedEnabled = true,
         jsr250Enabled = true)
@@ -50,17 +50,5 @@ public class SecurityConfiguration {
         userDetailsList.add(user3);
         userDetailsList.add(user4);
         return new InMemoryUserDetailsManager(userDetailsList);
-    }
-
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("persons/userName*").permitAll()
-                        .requestMatchers("persons/by-city*").authenticated()
-                        //.anyRequest().hasAnyRole()
-                )
-                .formLogin(withDefaults());
-        return http.build();
     }
 }

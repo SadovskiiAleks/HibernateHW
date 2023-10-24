@@ -11,16 +11,8 @@ import org.springframework.stereotype.Repository;
 @SpringBootApplication
 public class HibernateHwApplication {
 
-//    @PersistenceContext
-//    private EntityManager entityManager;
-
     public static void main(String[] args) {
         SpringApplication.run(HibernateHwApplication.class, args);
-//        Persons persons1 = Persons.builder()
-//                .name("Sadovskii")
-//                .surname("Sasha")
-//                .build();
-//        entityManager.persist(persons1);
     }
 
 }

@@ -38,7 +38,7 @@ public class ControllerImpl implements Controller {
     }
 
     // "WRITE"
-    @RolesAllowed({"ROLE_WRITE"})
+    @RolesAllowed({"WRITE"})
     @GetMapping("/addUser")
     public boolean addUser(@RequestParam String name, @RequestParam String surname){
         return repositoryImpl.addNewUser(name,surname);
@@ -50,21 +50,23 @@ public class ControllerImpl implements Controller {
         return repositoryImpl.deleteUser(name,surname);
     }
 
-    @PreAuthorize("hasRole('ROLE_WRITE,ROLE_DELETE')")
+    @PreAuthorize("hasRole('ROLE_WRITE') or hasRole('ROLE_DELETE')")
     @GetMapping("/preAuthorize")
     public String preAuthorize(){
+        System.out.println("Test");
         return "preAuthorize";
     }
 
-    @PostAuthorize("hasRole('ROLE_WRITE,ROLE_DELETE')")
+    @PostAuthorize("hasRole('ROLE_WRITE') or hasRole('ROLE_DELETE')")
     @GetMapping("/postAuthorize")
     public String postAuthorize(){
+        System.out.println("Test");
         return "postAuthorize";
     }
 
     @GetMapping("/asUserAuthentication")
-    public boolean asUserAuthentication(@RequestParam String name){
-
-        return true;
+    @PreAuthorize("#username == authentication.principal.username")
+    public String asUserAuthentication(@RequestParam String username){
+        return "All OK " + username;
     }
 }
